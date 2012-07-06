@@ -1,0 +1,403 @@
+<html>
+<head>
+    <style>
+        .we_myview, .we_myview1
+        {
+            width: 200px;
+            height: 200px;
+            background-color: white;
+            padding: 0 20px 0 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px;
+            display: block;
+            float: left;
+        }
+        .we_myview1:hover
+        {
+            width: 400px;
+            height: 400px;
+            float: left;
+        }
+        .we_cmsgs
+        {
+            overflow: scroll;
+            background: #5C5C5C;
+            top: 0px;
+            position: absolute;
+            right: 5px;
+            width: 350px;
+            height: 758px;
+            margin: 0px;
+            box-shadow: 0px 0px 30px black;
+        }
+        .we_cbox
+        {
+            position: absolute;
+            bottom: -15px;
+            left: 5px;
+            width: 190px;
+        }
+        .bubbledLeft, .bubbledRight
+        {
+            position: relative;
+            margin-top: 3px;
+            max-width: 80%;
+            clear: both;
+            background: #AAD5F7;
+            border-radius: 10px 10px 0px 10px;
+            box-shadow: 3px 3px 8px #000;
+        }
+        .bubbledLeft
+        {
+            float: left;
+            margin-right: auto;
+            padding: 4px 10px 4px 15px;
+            background: lightyellow;
+            border-radius: 10px 10px 10px 0px;
+        }
+        .bubbledLeft:before
+        {
+            z-index: -1;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+            content: "";
+            border-width: 8px 10px 8px 17px;
+            border-image: url(http://www.rwe-uk.com/static/ichat_with_css3/speech_bubble_left_2.png) 8 10 8 17 stretch stretch;
+            -webkit-border-image: url(http://www.rwe-uk.com/static/ichat_with_css3/speech_bubble_left_2.png) 8 10 8 17 stretch stretch;
+            -moz-border-image: url(http://www.rwe-uk.com/static/ichat_with_css3/speech_bubble_left_2.png) 8 10 8 17 stretch stretch;
+            -o-border-image: url(http://www.rwe-uk.com/static/ichat_with_css3/speech_bubble_left_2.png) 8 10 8 17 stretch stretch;
+        }
+        .bubbledRight
+        {
+            float: right;
+            margin-left: auto;
+            text-align: right;
+            padding: 4px 15px 4px 10px;
+        }
+        .bubbledRight:before
+        {
+            z-index: -1;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+            content: "";
+            border-width: 8px 17px 8px 10px;
+            border-image: url(http://www.rwe-uk.com/static/ichat_with_css3/speech_bubble_right_2.png) 8 17 8 10 stretch stretch;
+            -webkit-border-image: url(http://www.rwe-uk.com/static/ichat_with_css3/speech_bubble_right_2.png) 8 17 8 10 stretch stretch;
+            -moz-border-image: url(http://www.rwe-uk.com/static/ichat_with_css3/speech_bubble_right_2.png) 8 17 8 10 stretch stretch;
+            -o-border-image: url(http://www.rwe-uk.com/static/ichat_with_css3/speech_bubble_right_2.png) 8 17 8 10 stretch stretch;
+        }
+        
+        ul.polaroids
+        {
+            width: 970px;
+            margin: 0 0 18px -30px;
+        }
+        ul.polaroids li
+        {
+            display: inline;
+        }
+        ul.polaroids a
+        {
+            background: #fff;
+            display: inline;
+            float: left;
+            margin: 0 0 27px 30px;
+            width: auto;
+            padding: 10px 10px 15px;
+            text-align: center;
+            font-family: "Marker Felt" , sans-serif;
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+            -moz-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+            -webkit-transform: rotate(-2deg);
+            -webkit-transition: -webkit-transform .15s linear;
+            -moz-transform: rotate(-2deg);
+        }
+        ul.polaroids img
+        {
+            display: block;
+            width: 190px;
+            margin-bottom: 12px;
+        }
+        ul.polaroids a:after
+        {
+            content: attr(title);
+        }
+        
+        ul.polaroids li:nth-child(even) a
+        {
+            -webkit-transform: rotate(2deg);
+            -moz-transform: rotate(2deg);
+        }
+        ul.polaroids li:nth-child(3n) a
+        {
+            -webkit-transform: none;
+            position: relative;
+            top: -5px;
+            -moz-transform: none;
+        }
+        ul.polaroids li:nth-child(5n) a
+        {
+            -webkit-transform: rotate(5deg);
+            position: relative;
+            right: 5px;
+            -moz-transform: rotate(5deg);
+        }
+        ul.polaroids li:nth-child(8n) a
+        {
+            position: relative;
+            right: 5px;
+            top: 8px;
+        }
+        ul.polaroids li:nth-child(11n) a
+        {
+            position: relative;
+            left: -5px;
+            top: 3px;
+        }
+        
+        ul.polaroids li.messy a
+        {
+            margin-top: -375px;
+            margin-left: 160px;
+            -webkit-transform: rotate(-5deg);
+            -moz-transform: rotate(-5deg);
+        }
+        
+        ul.polaroids li a:hover
+        {
+            -webkit-transform: scale(1.25);
+            -moz-transform: scale(1.25);
+            -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.5);
+            -moz-box-shadow: 0 3px 6px rgba(0,0,0,.5);
+            position: relative;
+            z-index: 5;
+        }
+        div#pageHeader h1
+        {
+            font-family: Arial, Helvetica, 'Helvetica Neue' , Verdana, sans-serif;
+            font-size: 45px;
+            margin-bottom: 4px;
+            color: #62412E;
+            text-shadow: 0 1px 1px rgba(255, 255, 255, .5);
+        }
+        body
+        {
+            background: white url(http://www.zurb.com/playground/images/playground/wood-bg.jpg);
+        }
+        .cdiv
+        {
+            overflow: hidden;
+            max-height: 300px;
+        }
+        .we_ioverlay
+        {
+            /* must be initially hidden */
+            display: none; /* place overlay on top of other elements */
+            z-index: 10000; /* styling */
+            background-color: #333;
+            width: 675px;
+            height: 600px;
+            border: 1px solid #666; /* CSS3 styling for latest browsers */
+            -moz-box-shadow: 0 0 90px 5px #000;
+            -webkit-box-shadow: 0 0 90px #000;
+        }
+        /* close button positioned on upper right corner */
+        .we_ioverlay .close
+        {
+            background-image: url(http://127.0.0.1:8881/close.png);
+            position: absolute;
+            right: -15px;
+            top: -15px;
+            cursor: pointer;
+            height: 35px;
+            width: 35px;
+        }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+    <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="page">
+        <div class='we_myview'>
+        </div>
+        <div class='we_myview1'>
+        </div>
+        <div class="users">
+            <div id="pageheader">
+                <h1>
+                    Logged In Users</h1>
+            </div>
+            <ul id="lusers" class="polaroids">
+            </ul>
+        </div>
+        <div class="we_cmsgs">
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var getUserMedia = function (success, fail) {
+                try {
+                    navigator.webkitGetUserMedia({ audio: true, video: true }, success,
+									   fail);
+                    console.log("Requested access to local media with new syntax.");
+                } catch (e) {
+                    try {
+                        navigator.webkitGetUserMedia("video,audio", success,
+										 fail);
+                        console.log("Requested access to local media with old syntax.");
+                    } catch (e) {
+                        alert("webkitGetUserMedia() failed. Is the MediaStream flag enabled in about:flags?");
+                        console.log("webkitGetUserMedia failed with exception: " + e.message);
+                    }
+                }
+            }
+
+            var toggleMyView = function (e) {
+                var localStream;
+                if (localStream != undefined) {
+                    return;
+                }
+                var myvideo = $("<video autoplay height='100%' width='100%' controls='true'></video>");
+                $(".we_myview").append(myvideo);
+                getUserMedia(
+			        function (stream) {
+			            console.log("User has granted access to local media.");
+			            var url = webkitURL.createObjectURL(stream);
+			            console.log(url);
+			            console.log(JSON.stringify(stream));
+			            //myvideo.style.opacity = 1;
+			            myvideo.attr('src', url);
+			            localStream = stream;
+			        },
+			        function (error) {
+			            console.log("Error accesing camera:" + JSON.stringify(error));
+			        }
+		        );
+            }
+
+            var toggleMyView1 = function (e) {
+                var localStream;
+                if (localStream != undefined) {
+                    return;
+                }
+                var myvideo = $("<video autoplay height='100%' width='100%' controls='true'></video>");
+                $(".we_myview1").append(myvideo);
+                getUserMedia(
+			        function (stream) {
+			            console.log("User has granted access to local media.");
+			            var url = webkitURL.createObjectURL(stream);
+			            console.log(url);
+			            console.log(JSON.stringify(stream));
+			            //myvideo.style.opacity = 1;
+			            myvideo.attr('src', url);
+			            localStream = stream;
+			        },
+			        function (error) {
+			            console.log("Error accesing camera:" + JSON.stringify(error));
+			        }
+		        );
+            }
+
+            $(".we_myview").click(toggleMyView);
+            $(".we_myview1").click(toggleMyView1);
+
+            function doImagePoll(frndname, node, alink, overlaydiv) {
+                $.getJSON('http://127.0.0.1:8880/getuserpage?name=' + frndname, function (data) {
+                    node.attr('src', data.data);
+                    //alink.html("<p><a href='" + data.url + "'>" + data.title + "</a></p>");
+                    overlaydiv.html("<div style='overflow:scroll;height:580px;width:640px;position:absolute;" +
+                                    "top:20px;left:15px;'><img src='" + data.data + "'/></div>");
+                    node.overlay();
+                });
+            }
+
+            var clsfn = function (e) {
+                this.value = "";
+            };
+
+            var submitfn = function (e) {
+                var ibox = $(this);
+                var msg = this.value;
+                var to = ibox.attr('data-to');
+                //console.log(e);
+                if (e.keyCode != 13)
+                    return;
+
+                $.getJSON("http://127.0.0.1:8880/send?from=csa&to=" + to + "&msg=" + escape(msg) + "&callback=?", function (data) {
+                    console.log(data);
+                    ibox.attr('value', "");
+                });
+                e.preventDefault();
+            };
+
+            $.getJSON("/user?name=csa", function (data) {
+                var i = 0;
+                var imga = [];
+                var ods = [];
+                for (i = 0; i < data.friends.length; i++) {
+                    var frnd = data.friends[i];
+                    var img = $("<img alt='" + frnd + "' class='we_scrshot' rel='#we_" + frnd + "page'/>");
+                    var overlaydiv = $("<div class='we_ioverlay' id='we_" + frnd + "page'></div>");
+                    overlaydiv.keydown(function (e) {
+                        if (e.keyCode != 27)
+                            return;
+                        overlaydiv.hide('slow');
+
+                    });
+                    $("body").append(overlaydiv);
+                    var inp = $("<input type='text' value='chat' " +
+                    "data-to='" + frnd +
+                    "' class='we_cbox'/>");
+                    inp.click(clsfn);
+                    inp.keydown(submitfn);
+                    var cdiv = $("<div class='cdiv'></div>");
+                    cdiv.append(inp)
+                    cdiv.append(img);
+                    var alink = $("<a title='" + frnd + "'></a>");
+                    alink.append(cdiv);
+                    var li = $("<li></li>");
+                    li.append(alink);
+                    $("#lusers").append(li);
+                    imga.push(img);
+                    ods.push(overlaydiv);
+                }
+                setInterval(
+                        function () {
+                            for (i = 0; i < data.friends.length; i++) {
+                                var frnd = data.friends[i];
+                                doImagePoll(frnd, imga[i], alink, ods[i]);
+                            }
+                        },
+                        5000);
+            });
+            var doChatPoll = function (frnd, chatmsgs) {
+                $.getJSON("http://127.0.0.1:8880/getusrmsgs?name=" + frnd + "&callback=?", function (data) {
+                    var i = chatmsgs.children().length;
+                    for (; i < data.msgs.length; i = i + 1) {
+                        if (data.msgs[i].from.toLocaleLowerCase() == frnd) {
+                            chatmsgs.append("<div class='bubbledLeft'>to:" + data.msgs[i].to + " &gt; " + data.msgs[i].msg + "</div>");
+                        }
+                        else {
+                            chatmsgs.append("<div class='bubbledRight'>" + data.msgs[i].msg + " &lt; " + data.msgs[i].from + ":from</div>");
+                        }
+                        //chatmsgs.append("<p><span class='we_cu'>" + data.msgs[i].from + "&nbsp;>&nbsp;</span><span class='we_cm'>" + data.msgs[i].msg + "</span></p>");
+                    };
+                });
+            };
+
+            setInterval(function () {
+                doChatPoll("csa", $(".we_cmsgs"));
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
